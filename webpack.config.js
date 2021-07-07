@@ -1,42 +1,28 @@
+// noinspection WebpackConfigHighlighting
+
 const path = require('path')
-const webpack = require('webpack')
-const packageJSON = require('./package.json')
 
 module.exports = {
-  context: path.join(__dirname, './lib'),
-  entry: './index.js',
-  devtool: 'source-map',
-  target: 'node',
-  output: {
-    path: __dirname,
-    libraryTarget: 'commonjs2',
-    filename: 'pagarme.js',
-    sourceMapFilename: 'pagarme.js.map',
-  },
+  entry: './src/index.ts',
+  mode: 'production',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.json$/,
-        loader: 'json',
-      },
-    ],
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'eslint',
+        test: /\.ts?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      PAGARME_VERSION: JSON.stringify(packageJSON.version),
-    }),
-  ],
+  resolve: {
+    extensions: ['.ts', '.js'],
+    fallback: {
+      crypto: false,
+    },
+  },
+  output: {
+    filename: 'pagar-me-bundle.js',
+    libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'dist'),
+  },
 }
-

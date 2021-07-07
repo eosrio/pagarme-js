@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "resolveJsonModule": false,
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "lib/esm",
+    "target": "ES2017",
+    "module": "ES6",
+    "lib": [
+      "ES2018",
+      "DOM"
+    ],
+    "newLine": "lf",
+    "stripInternal": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}
